@@ -26,15 +26,15 @@ print('\n', dataset.shape)
 # plt.legend()
 # plt.show()
 
-# #Plot Height vs Weight............
-# x2 = dataset.iloc[:, 1].values
-# y2 = dataset.iloc[:, 2].values
-# plt.scatter(x2,y2,label='Height',color='Orange',s=50)
-# plt.xlabel('Height')
-# plt.ylabel('Weight')
-# plt.title('Height vs Weight')
-# plt.legend(loc="lower right")
-# plt.show()
+#Plot Height vs Weight............
+x2 = dataset.iloc[:, 1].values
+y2 = dataset.iloc[:, 2].values
+plt.scatter(x2,y2,label='Height',color='Orange',s=50)
+plt.xlabel('Height')
+plt.ylabel('Weight')
+plt.title('Height vs Weight')
+plt.legend(loc="lower right")
+plt.show()
 
 #separating the dependent and independent values....
 #X-Independent variable
