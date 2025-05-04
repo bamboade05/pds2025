@@ -2,7 +2,9 @@
 import pandas
 import pandas as pd
 from sklearn import model_selection
-from sklearn.linear_model import LogisticRegression
+from sklearn.linear_model import LogisticRegression, LinearRegression
+from sklearn.metrics import mean_squared_error
+from sklearn.model_selection import train_test_split
 import pickle
 
 dataframe = pandas.read_csv('diabetes(1).csv', index_col=True)
@@ -39,3 +41,22 @@ print(result)
 # Task 2 Create another model with LR to predict results and serialize model with picklefiles (Air
 # Quality dataset)
 
+df = pd.read_csv('AirQualityUCI-CSV.csv', sep=';', decimal=',', index_col=False)
+df = df.dropna(axis=1, how='all')
+df = df.dropna()
+df = df.drop(columns=['Date', 'Time'], errors='ignore')
+df = df.apply(pd.to_numeric, errors='coerce')
+df = df.dropna()
+X = df.drop(columns=['CO(GT)'])
+y = df['CO(GT)']
+
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+model = LinearRegression()
+model.fit(X_train, y_train)
+predictions = model.predict(X_test)
+print("MSE:", mean_squared_error(y_test, predictions))
+
+with open('linear_regression_model.pkl', 'wb') as f:
+    pickle.dump(model, f)
+
+print("Model saved as 'linear_regression_model.pkl'")
