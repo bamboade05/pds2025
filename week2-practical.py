@@ -275,3 +275,46 @@ print("\n")
 print(a.reshape(6, 2)) # returns the array with a modified shape
 print("\n")
 
+print(a.T) # returns the array, transposed
+print("\n")
+
+print(a.T.shape)
+print("\n")
+
+print(a)
+print("\n")
+
+a.resize((2, 6))
+print(a)
+print("\n")
+
+# --- Shape Manipulation ---
+
+a = np.floor(10 * rg.random((2, 2)))
+print(a)
+print("\n")
+
+b = np.floor(10 * rg.random((2, 2)))
+print(b)
+print("\n")
+
+print(np.vstack((a, b)))
+print("\n")
+
+print(np.hstack((a, b)))
+print("\n")
+
+# --- Splitting one array into several smaller ones ---
+a = np.floor(10 * rg.random((2, 12)))
+print(a)
+print("\n")
+
+print(np.hsplit(a, 3))
+print("\n")
+
+print(np.hsplit(a, (3, 4)))
+print("\n")
+
+
+
+
